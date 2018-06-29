@@ -25,9 +25,8 @@ import qualified Data.Map.Strict as Map
 import           Data.Text.Buildable (Buildable (..))
 import           Data.Word (Word32)
 
-import           Pos.Core (MainBlock, Tx, TxAux (..), TxIn (..), TxOut,
-                     TxOutAux (..), gbBody, mbTxs, mbWitnesses, txInputs,
-                     txOutputs)
+import           Pos.Core (GenesisBlock, MainBlock, Tx, TxAux (..), TxIn (..), TxOut, TxOutAux (..),
+                           gbBody, mbTxs, mbWitnesses, txInputs, txOutputs)
 import           Pos.Crypto.Hashing (hash)
 import           Pos.Txp (Utxo)
 import           Serokell.Util (enumerate)
@@ -103,10 +102,15 @@ mkRawResolvedTx txAux ins =
 
 -- | Signed block along with its resolved inputs
 --
+-- If this block sits directly after an epoch boundary, it might additionally
+-- have an attached epoch boundary block which should directly proceed it in the
+-- chain . This is becuase the DSL contains no notion of epoch boundaries.
+--
 -- Constructor is marked unsafe because the caller should make sure that
 -- invariant 'invRawResolvedBlock' holds.
 data RawResolvedBlock = UnsafeRawResolvedBlock {
       rawResolvedBlock       :: MainBlock
+    , rawResolvedBlockEBB    :: Maybe GenesisBlock
     , rawResolvedBlockInputs :: ResolvedBlockInputs
     }
 
@@ -124,10 +128,10 @@ invRawResolvedBlock block ins =
     txs = getBlockTxs block
 
 -- | Smart constructor for 'RawResolvedBlock' that checks the invariant
-mkRawResolvedBlock :: MainBlock -> ResolvedBlockInputs -> RawResolvedBlock
-mkRawResolvedBlock block ins =
+mkRawResolvedBlock :: MainBlock -> Maybe GenesisBlock -> ResolvedBlockInputs -> RawResolvedBlock
+mkRawResolvedBlock block mebb  ins =
     if invRawResolvedBlock block ins
-      then UnsafeRawResolvedBlock block ins
+      then UnsafeRawResolvedBlock block mebb ins
       else error "mkRawResolvedBlock: invariant violation"
 
 {-------------------------------------------------------------------------------
