@@ -21,8 +21,10 @@ library
                        Test.Pos.Core.Arbitrary.Unsafe
                        Test.Pos.Core.Arbitrary.Txp
                        Test.Pos.Core.Arbitrary.Txp.Unsafe
+                       Test.Pos.Core.Json
 
   build-depends:       QuickCheck
+                     , aeson
                      , base
                      , base16-bytestring
                      , bytestring
@@ -39,6 +41,7 @@ library
                      , cryptonite
                      , cryptonite-openssl >= 0.5
                      , data-default
+                     , ed25519
                      , formatting
                      , generic-arbitrary
                      , hedgehog

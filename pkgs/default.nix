@@ -15168,9 +15168,7 @@ license = stdenv.lib.licenses.mit;
 , cryptonite
 , data-default
 , digest
-, directory
 , extra
-, file-embed
 , filelock
 , filepath
 , fmt
@@ -15256,9 +15254,7 @@ cereal
 containers
 cryptonite
 data-default
-directory
 extra
-file-embed
 filelock
 filepath
 fmt
@@ -15307,8 +15303,6 @@ license = stdenv.lib.licenses.mit;
 , cereal
 , cpphs
 , cryptonite
-, directory
-, file-embed
 , filepath
 , formatting
 , half
@@ -15346,8 +15340,6 @@ cardano-sl-util-test
 cborg
 cereal
 cryptonite
-directory
-file-embed
 filepath
 formatting
 half
@@ -18082,9 +18074,15 @@ license = stdenv.lib.licenses.mit;
 ({
   mkDerivation
 , aeson
+, aeson-pretty
 , async
 , base
 , binary
+, bytestring
+, cardano-crypto
+, cardano-sl-binary
+, cardano-sl-core
+, cardano-sl-crypto
 , cborg
 , cereal
 , concurrent-extra
@@ -18095,12 +18093,14 @@ license = stdenv.lib.licenses.mit;
 , data-default
 , deepseq
 , directory
+, ed25519
 , ether
 , exceptions
 , file-embed
 , filepath
 , formatting
 , hashable
+, hedgehog
 , hspec
 , lens
 , log-warper
@@ -18192,13 +18192,26 @@ libraryToolDepends = [
 cpphs
 ];
 testHaskellDepends = [
+aeson
+aeson-pretty
 async
 base
+bytestring
+cardano-crypto
+cardano-sl-binary
+cardano-sl-core
+cardano-sl-crypto
+directory
+ed25519
+file-embed
+filepath
+hedgehog
 hspec
 QuickCheck
 quickcheck-instances
 serokell-util
 stm
+template-haskell
 text
 time
 time-units
@@ -18216,23 +18229,36 @@ license = stdenv.lib.licenses.mit;
 "cardano-sl-util-test" = callPackage
 ({
   mkDerivation
+, aeson
+, aeson-pretty
 , attoparsec
 , base
 , base16-bytestring
 , bytestring
+, cardano-crypto
+, cardano-sl-binary
+, cardano-sl-core
+, cardano-sl-crypto
 , cardano-sl-util
 , cpphs
 , cryptonite
+, directory
+, ed25519
+, file-embed
+, filepath
 , formatting
 , hedgehog
 , hspec
 , mtl
 , QuickCheck
 , quickcheck-instances
+, serokell-util
 , stdenv
 , tagged
+, template-haskell
 , time-units
 , universum
+, unordered-containers
 }:
 mkDerivation {
 
@@ -18245,21 +18271,34 @@ configureFlags = [
 "--ghc-option=-Werror"
 ];
 libraryHaskellDepends = [
+aeson
+aeson-pretty
 attoparsec
 base
 base16-bytestring
 bytestring
+cardano-crypto
+cardano-sl-binary
+cardano-sl-core
+cardano-sl-crypto
 cardano-sl-util
 cryptonite
+directory
+ed25519
+file-embed
+filepath
 formatting
 hedgehog
 hspec
 mtl
 QuickCheck
 quickcheck-instances
+serokell-util
 tagged
+template-haskell
 time-units
 universum
+unordered-containers
 ];
 libraryToolDepends = [
 cpphs

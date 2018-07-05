@@ -132,20 +132,37 @@ test-suite test
 
   other-modules:
                        Spec
+                       Test.Pos.Util.Golden
                        Test.Pos.Util.Modifier
                        Test.Pos.Util.ModifierSpec
                        Test.Pos.Util.QuickCheck.Property
                        Test.Pos.Util.TimerSpec
+                       Test.Pos.Util.Tripping
 
-  build-depends:       base
+  build-depends:       aeson
+                     , base
+                     , aeson-pretty
+                     , bytestring
                      , async
+                     , cardano-crypto
+                     , cardano-sl-crypto
+                     , cardano-sl-core
                      , cardano-sl-util
+                     , directory
+                     , ed25519
+                     , file-embed
+                     , filepath
+                     , hedgehog
                      , hspec
+                     , pretty-show
                      , QuickCheck
                      , quickcheck-instances
                      , serokell-util >= 0.1.3.4
+                     , serokell-util
                      , stm
+                     , template-haskell
                      , text
+                     , text-format
                      , time
                      , time-units
                      , universum >= 1.1.0

@@ -55,6 +55,7 @@ module Test.Pos.Core.Gen
         , genFakeAvvmOptions
         , genGenesisAvvmBalances
         , genGenesisDelegation
+        , genGenesisInitializer
         , genGenesisProtocolConstants
         , genGenesisSpec
         , genTestnetBalanceOptions

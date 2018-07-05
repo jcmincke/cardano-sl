@@ -262,16 +262,18 @@ test-suite test
                        Test.Pos.Core.Chrono
                        Test.Pos.Core.ChronoSpec
                        Test.Pos.Core.CoinSpec
+                       Test.Pos.Core.EnumEmpTest
                        Test.Pos.Core.Gen
+                       Test.Pos.Core.Json
                        Test.Pos.Core.LimitsSpec
                        Test.Pos.Core.SeedSpec
                        Test.Pos.Core.SlottingSpec
-                       Test.Pos.Core.EnumEmpTest
 
                        Test.Pos.Core.Arbitrary
                        Test.Pos.Core.Arbitrary.Unsafe
 
-  build-depends:       base
+  build-depends:       aeson
+                     , base
                      , base16-bytestring
                      , bytestring
                      , cardano-crypto
@@ -285,6 +287,7 @@ test-suite test
                      , containers
                      , cryptonite
                      , deepseq
+                     , ed25519
                      , formatting
                      , generic-arbitrary
                      , hedgehog

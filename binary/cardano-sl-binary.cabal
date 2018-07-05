@@ -110,11 +110,9 @@ test-suite test
                      , containers
                      , cryptonite
                      , data-default
-                     , directory
                      , extra
                      , filepath
                      , filelock
-                     , file-embed
                      , fmt
                      , formatting
                      , generic-arbitrary
