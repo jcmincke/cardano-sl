@@ -106,7 +106,6 @@ library
                      , serokell-util
                      , stm
                      , tagged
-                     , template-haskell
                      , text-format
                      , time-units
                      , transformers
